@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:40:04 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/08 21:45:00 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/09 22:40:01 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,15 @@
 
 void   *ft_memset(void *b, int c, size_t len)
 {
-    unsigned char   *s;
-    size_t          i;
+    char    *s;
+    size_t  i;
 
-    s = (unsigned char *)b;
+    s = (char*)b;
     i = 0;
     while (i < len)
     {
-        b[i] = (unsigned char)c;
+        s[i] = (char)c;
         i++; 
     }
-    return (b);
-}
-
-#include <stdio.h>
-
-int     main(int ac, char **av)
-{
-    if (ac > 1)
-    {
-        printf("%s\n", ft_memset(av[1], av[2], 3));
-    }
-    return (0);
+    return ((void*)s);
 }

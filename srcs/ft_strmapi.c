@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 17:16:08 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/08 17:50:36 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/08 23:27:13 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 #include <stdio.h>
 int		main(int ac, char **av)
 {
-	if(ac > 1)
+	if (ac > 1)
 	{
-		char (*f)(unsigned int, char);
+		char	(*f)(unsigned int, char);
 
 		f = &ft_rot13;
 		printf("%s\n", ft_strmapi(av[1], f(13, *av[1])));

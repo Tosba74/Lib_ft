@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 21:42:29 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/08 21:45:11 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/08 23:55:53 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ unsigned int    ft_check_base(const char *base)
 		}
 		i++;
 	}
-	return(i);
+	return (i);
 }
 
 int		ft_len_num(int n, int b)
@@ -52,7 +52,6 @@ int		ft_len_num(int n, int b)
 	return (count); 
 }
 
-#include <stdio.h>
 void    ft_recursive_itoa(long nb, int i, char *base, char *result)
 {
 	int b;
