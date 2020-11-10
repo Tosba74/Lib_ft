@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:41:58 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/09 14:06:52 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/09 23:02:29 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,4 @@ int     ft_memcmp(const void *s1, const void *s2, size_t n)
 		return (0);
 	else
 		return (str1[i] - str2[i]);
-}
-
-#include <stdio.h>
-int	main(int ac, char **av)
-{
-	if (ac == 3)
-	{
-		const void *s1 = (const void *) av[1];
-		const void *s2 = (const void *) av[2];
-		printf("%d\n", ft_memcmp(s1, s2, 5));
-		printf("%d\n", memcmp(s1, s2, 5));
-	}
-	return (0);
 }

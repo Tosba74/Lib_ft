@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:43:29 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/09 17:03:10 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/09 23:02:33 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,3 @@ void    *ft_memccpy(void *dst, const void *src, int c, size_t n)
 	}
 	return (NULL);
 }
-
-
-#include <stdio.h>
-int     main(int ac, char **av)
-{
-    if(ac == 5)
-    {
-        char    *ref = (char*)memccpy((void*)av[1], (const void*)av[2], 48, 9);
-        char    *moi = (char*)ft_memccpy((void*)av[3], (const void*)av[4], 48, 9);
-        printf("REF -- %s\n", ref);
-        printf("MOI -- %s\n", moi);
-    }
-    return (0);
-}
-

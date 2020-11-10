@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/09 00:37:13 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/09 23:57:19 by bmangin          ###   ########lyon.fr   */
+/*   Created: 2020/11/09 22:58:18 by bmangin           #+#    #+#             */
+/*   Updated: 2020/11/09 23:21:24 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-t_list  *ft_lstlast(t_list *lst)
+char	*ft_strrev(char *s)
 {
-	while(lst != NULL)
+	size_t i;
+	size_t len;
+	char tmp;
+
+	i = 0;
+	len = ft_strlen(s) - 1;
+	if (len == 0)
+		return (NULL);
+	while (i <= len)
 	{
-		if (lst->next == NULL)
-			return (lst);
-		else
-			lst = lst->next;
+		tmp = s[len];
+		s[len] = s[i];
+		s[i] = tmp;
+		len--;
+		i++;
 	}
+	return (s);
 }
