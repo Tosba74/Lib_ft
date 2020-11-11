@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 00:37:13 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/09 23:57:19 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/10 02:27:38 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 
 t_list  *ft_lstlast(t_list *lst)
 {
+	if (lst->next == NULL)
+		return (lst);
 	while(lst != NULL)
 	{
 		if (lst->next == NULL)
 			return (lst);
-		else
-			lst = lst->next;
+		lst = lst->next;
 	}
 }
