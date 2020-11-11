@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 00:34:05 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/10 12:14:08 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/11 23:38:16 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 void    ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	del(lst->content);
-	del(lst->next);
-	free(lst);
+	int		i;
+
+	i = 0; 
+	while (lst[i]->next != NULL)
+	{
+		del(lst[i]->content);
+		free(lst[i]->content);
+		lst[i] = lst[i]->next;
+		i++;
+	}
+	if (lst[i]->next == NULL)
+	{
+		del(lst[i]->content);
+		free(lst[i]->content);
+	}	
 }

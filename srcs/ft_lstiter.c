@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 00:36:02 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/09 00:37:05 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/11 23:38:11 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 void    ft_lstiter(t_list *lst, void (*f)(void *))
 {
-
+	while (lst)
+	{
+		if (lst->next == NULL)
+			return ;
+		f(lst->content);
+		lst = lst->next;
+	}
 }
