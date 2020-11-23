@@ -6,28 +6,31 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 00:37:56 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/11 23:55:59 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/19 15:54:01 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-t_list  *ft_lstmap(t_list *lst, void *(*f)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*list;
 
-	if (!(list = (t_list*)malloc(sizeof(t_list))))
+	if (lst == NULL)
 		return (NULL);
-	while (lst->next != NULL)
+	if (!(list = (t_list*)malloc(sizeof(*lst))))
+		return (NULL);	
+	while (lst)
 	{
+		del(list->content);
 		list->content = f(lst->content);
-		lst = lst->next;
-		list = list->next;
-	}
-	if (lst->next == NULL)
-	{
-		list->content = f(lst->content);
-		list->next = NULL;
+		if (lst->next == NULL)
+			return (list);
+		else
+		{
+			list->next = lst->next;
+			list = lst->next;
+		}
 	}
 	return (list);
 }

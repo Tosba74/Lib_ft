@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_check_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 11:30:31 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/12 01:07:21 by bmangin          ###   ########lyon.fr   */
+/*   Created: 2020/11/12 01:05:07 by bmangin           #+#    #+#             */
+/*   Updated: 2020/11/12 01:06:14 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void    ft_putnbr_base(int n, char *base)
+int		ft_check_base(const char *base)
 {
-	long	nb;
-	int		b;
+	int		i;
+	int		j;
 
-	nb = n;
-	b = ft_check_base(base);
-	if (b == 0 || b == 1)
-		return ;
-	if (nb < 0)
+	i = 0;
+	while (base[i])
 	{
-		ft_putchar('-');
-		nb = -nb;
+		j = i + 1;
+    	if (base[i] == ' ' || (base[i] >= 9 && base[i] <= 13))
+			return (0);
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return (0);
+			j++;
+		}
+		i++;
 	}
-	if (nb >= b)
-		ft_putnbr_base(nb / b, base);
-	ft_putchar(base[nb % b]);
+	return(i);
 }

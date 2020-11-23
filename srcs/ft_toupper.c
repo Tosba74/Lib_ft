@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:37:41 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/04 00:39:24 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/12 02:17:14 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,5 @@ int     ft_toupper(int c)
 {
     if (c >= 'a' && c <= 'z')
         c -= 32;
-    return (0);
+    return (c);
 }

@@ -6,13 +6,11 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 01:03:38 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/04 01:10:53 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/12 00:29:50 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-
-size_t  ft_strlen(const char *s);
 
 char    *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {

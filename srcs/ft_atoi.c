@@ -6,32 +6,43 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:58:11 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/05 01:50:46 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/18 02:23:55 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
+int     ft_check_num(long num, int neg, int len)
+{
+    if (len >= 19 && neg == 1)
+        return (-1);
+    else if (len >= 20 && neg == -1)
+        return (0);
+    else
+        return (num * neg);
+}
+
 int     ft_atoi(const char *str)
 {
-    int     num;
+    long    num;
     int     neg;
-    
+    int     len;
+
     num = 0;
     neg = 1;
-    while (*str == ' ' || (*str >= 9 && *str <= 13))
+    len = 0;
+    while ((9 <= *str && *str <= 13) || *str == 32)
         str++;
     if (*str == '+' || *str == '-')
     {
         if (*str == '-')
-            neg = -neg;
+            neg = -1;
         str++;
     }
     while (*str >= '0' && *str <= '9')
     {
-        num *= 10;
-        num += *str - '0';
-        str++;
+        num = num * 10 + (*str++ - '0');
+        len++;
     }
-    return (num * neg);
+    return (ft_check_num(num, neg, len));
 }

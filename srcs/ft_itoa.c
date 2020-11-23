@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 11:31:30 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/05 13:15:15 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/22 22:10:51 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,46 @@ int		ft_len_num(int n)
 {
 	int		count;
 
-	count = 1;
+	count = 0;
 	if (n < 0)
     {
-		n = -n;
-        count++;
+        n = -n;
+		count++;
     }
-	while (n > 9)
+    while (n > 0)
 	{
 		n /= 10;
 		count++;
 	}
+    if (count == 0)
+        count++;
 	return (count); 
+}
+
+void    ft_recursive(long nb, int len, char *res)
+{
+
+    res[len] = nb % 10 + '0';
+    if (nb > 9)
+        ft_recursive(nb / 10, len - 1, res);
 }
 
 char    *ft_itoa(int n)
 {
 	long	nb;
-	int		i;
+	int		len;
 	char	*result;
 
 	nb = n; 
-	i = ft_len_num(n);
-	if (!(result = (char*)malloc(sizeof(char) * i)))
+	len = ft_len_num(n);
+	if (!(result = (char *)malloc(sizeof(char) * len)))
 		return (NULL);
 	if (nb < 0)
     {
 		result[0] = '-';
-        nb = -nb;
+        nb = -n;
     }
-	result[i] = '\0';
-	while (nb > 0)
-	{
-		i--;
-		result[i] = nb % 10 + '0';
-		nb /= 10;
-	}
+	result[len] = '\0';
+    ft_recursive(nb, len - 1, result);
 	return (result);
 }

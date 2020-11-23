@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 01:48:07 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/07 08:23:16 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/12 01:07:44 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,6 @@ int     ft_isneg(char c)
 		return (-1);
 	else
 		return (1);
-}
-
-int		ft_check_base(const char *base)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	while (base[i])
-	{
-		j = i + 1;
-    	if (base[i] == ' ' || (base[i] >= 9 && base[i] <= 13))
-			return (0);
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return(i);
 }
 
 int		ft_find_index(char c, const char *base)

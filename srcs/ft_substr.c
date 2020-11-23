@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 00:54:59 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/08 01:22:54 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/14 16:48:27 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 char    *ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	size_t	slen;
 	char	*s1;
 
 	i = 0;
-	slen = (len - start);
-	if (ft_strlen(s) < start)
-		return (0);
-	if (!(s1 = (char*)malloc(sizeof(char) * slen) + 1))
+	if (s == NULL)
 		return (NULL);
-	while (i < len)
+	if (start >= ft_strlen(s))
+		len = 0;
+	if (!(s1 = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	while (*s && i < len)
 		s1[i++] = s[start++];
 	s1[i] = '\0';
 	return (s1);

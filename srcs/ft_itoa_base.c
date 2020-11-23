@@ -6,50 +6,28 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 21:42:29 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/08 23:55:53 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/12 01:07:10 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-unsigned int    ft_check_base(const char *base)
-{
-	unsigned int		i;
-	unsigned int		j;
-
-	i = 0;
-	while (base[i])
-	{
-		j = i + 1;
-    	if (base[i] == ' ' || (base[i] >= 9 && base[i] <= 13))
-			return (0);
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (i);
-}
-
-int		ft_len_num(int n, int b)
+int     ft_len_numb(int n, int b)
 {
 	int		count;
 
 	count = 0;
-	if (n < 0)
+    if (n < 0)
     {
         n = -n;
-		count++;
+        count++;
     }
     while (n > 0 && b >= 1)
-	{
-		n /= b;
-		count++;
-	}
-	return (count); 
+    {
+        n /= b;
+        count++;
+    }
+    return (count);
 }
 
 void    ft_recursive_itoa(long nb, int i, char *base, char *result)
@@ -70,7 +48,7 @@ char	*ft_itoa_base(int n, char *base)
 	char	*result;
 
 	b = ft_check_base(base); 
-	i = ft_len_num(n, b);
+	i = ft_len_numb(n, b);
 	nb = n;
 	if (!(result = (char*)malloc(sizeof(char) * i)))
 		return (NULL);

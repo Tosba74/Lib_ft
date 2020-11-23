@@ -6,7 +6,7 @@
 #    By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/31 11:21:40 by bmangin           #+#    #+#              #
-#    Updated: 2020/11/04 01:14:15 by bmangin          ###   ########lyon.fr    #
+#    Updated: 2020/11/12 01:14:36 by bmangin          ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FILES 	= ft_atoi.c ft_atoi_base.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 	ft_strcpy.c ft_strdup.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
 	ft_strlen.c ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c \
 	ft_strnstr.c ft_strrchr.c ft_strrev.c ft_strstr.c ft_strtrim.c \
-	ft_substr.c ft_tolower.c ft_toupper.c
+	ft_substr.c ft_tolower.c ft_toupper.c ft_check_base.c
 
 FILES_B	= ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
 	ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
@@ -87,7 +87,7 @@ ${NAME}:		${OBJS}
 
 bonus:		${OBJS_B}
 		${AR} ${NAME} ${OBJS_B}
-		${I_LIB}${NAME}
+		${I_LIB} ${NAME}
 
 clean:		monkey
 		echo "${_P}$@ ${_E}${_R}ecrase your objets !${_E}"
@@ -117,6 +117,6 @@ monkey:
 		echo "$(_G) -$(_E)$(_Y)ooO$(_E)$(_G)--$(_E)$(_Y)(_)$(_E)$(_G)--$(_E)$(_Y)Ooo$(_E)$(_G)-$(_E)"
 		sleep 0.5
 
-re:			monkey fclean all
+re:			fclean all
 
 .PHONY:		clean fclean all re monkey

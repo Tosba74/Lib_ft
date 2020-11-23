@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 02:46:31 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/06 12:56:43 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/17 01:54:20 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 void    ft_putstr(char *s)
 {
-    int     i;
-
-    i = 0;
-	while (s[i])
-    {
-        ft_putchar_fd(s[i], 1);
-        i++;
-    }
+	if (s == NULL)
+		return ;
+	while (*s)
+        write(1, s++, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 14:59:41 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/08 17:15:16 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/19 16:12:35 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ size_t	ft_len_words(char const *s, char c, int pos)
 
 	i = 0;
 	while (s[pos + i] && ft_check_char(s[pos + i], c) != 1)
-    {
     	i++;
-	}
 	return (i + 1); 
 }
 
@@ -39,6 +37,8 @@ int		ft_nb_words(char const *s, char c)
 
 	i = 0;
 	nb = 1;
+	if (s == NULL)
+		return (i);
 	while (s[i])
 	{
 		if ((s[i + 1] == '\0' || ft_check_char(s[i + 1], c) != 0)
@@ -49,7 +49,6 @@ int		ft_nb_words(char const *s, char c)
 	return (nb);
 }
 
-#include <stdio.h>
 char    **ft_split(char const *s, char c)
 	{
 	size_t	i;
@@ -79,36 +78,17 @@ char    **ft_split(char const *s, char c)
 	return (tab);
 }
 
-
-
-void	ft_putstr(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
-}
-
-void	ft_printtab(char **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i])
-	{
-		ft_putstr(tab[i]);
-		write(1, "\n", 1);
-		i++;
-	}
-}
-
+#include <stdio.h>
 int		main(int ac, char **av)
 {
-	if (ac == 2)
-		ft_printtab(ft_split(av[1], 't'));
+	if (ac == 3)
+	{
+		char	**tab;
+		int		i;
+
+		tab = ft_split(av[1], *av[2]);
+		i = 0;
+		printf("%s/n", tab[i++]);
+	}
 	return (0);
 }

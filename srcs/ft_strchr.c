@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:39:37 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/06 13:41:12 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/12 03:52:40 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,9 @@
 
 char    *ft_strchr(const char *s, int c)
 {
-    int     i;
-
-    i = 0;
-    while (s[i])
-    {
-        if (s[i] == (char)c)
-            return ((char *)&s[i]);
-        i++;
-    }
+    while (*s && *s != c)
+        s++;
+    if (*s == c)
+        return ((char*)&(*s));
     return (NULL);
 }

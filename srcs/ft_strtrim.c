@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 01:24:22 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/08 02:17:49 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/22 22:09:07 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 int		ft_check_set(char c, char const *set)
 {
-	int		i;
-
-	i = 0;
-	while (set[i])
+	while (*set)
 	{
-		if (set[i] == c)
+		if (*set == c)
 			return (1);
-		i++;
+		set++;
 	}
 	return(0);
 }
@@ -29,37 +26,40 @@ int		ft_check_set(char c, char const *set)
 int		ft_len_word(char const *s, char const *set)
 {
 	int		i;
+	int		size;
 	int		len;
 
 	i = 0;
-	len = 1;
-	while (ft_check_set(s[i], set) == 1)
+	size = ft_strlen(s);
+	len = 0;
+	while (s[i] && ft_check_set(s[i], set) != 0)
 		i++;
-	while (s[i++])
-		len++;
-	while (s[i] == '\0' || ft_check_set(s[i], set) == 1)
-	{
-		len--;
-		i--;
-	}
-	return (len + 1);
+	while (ft_check_set(s[size], set) != 0)
+		size--;
+	if (size <= i)
+		len = 0;
+	len = size - i;
+	return (len);
 }
 
 char    *ft_strtrim(char const *s1, char const *set)
 {
 	int		i;
 	int		j;
+	int		len;
 	char	*s;
 
 	i = 0;
 	j = 0;
-	if (set[0] == '\0')
-		return (0);
-	if (!(s = (char*)malloc(sizeof(char) * ft_len_word(s1, set))))
+	len = ft_len_word(s1, set);
+	if (s1 == NULL)
 		return (NULL);
-	while (ft_check_set(s1[i], set) == 1)
-		i++;
-	while (j < ft_len_word(s1, set))
+	if (!(s = (char*)malloc(sizeof(char) * len + 1)))
+		return (NULL);
+	while (s[i] && ft_check_set(s1[i], set) != 0)
+			i++;
+	while (j <= len)
 		s[j++] = s1[i++];
+	s[j] = '\0';
 	return (s);
 }
