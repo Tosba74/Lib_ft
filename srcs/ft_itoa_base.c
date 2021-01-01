@@ -30,7 +30,7 @@ int     ft_len_numb(int n, int b)
     return (count);
 }
 
-void    ft_recursive_itoa(long nb, int i, char *base, char *result)
+void    ft_recursive_itoa(long nb, int i, const char *base, char *result)
 {
 	int b;
 
@@ -40,27 +40,33 @@ void    ft_recursive_itoa(long nb, int i, char *base, char *result)
         ft_recursive_itoa(nb / b, i - 1, base, result);
 }
 
-char	*ft_itoa_base(int n, char *base)
+char	*ft_itoa_base(int n, const char *base)
 {
 	int		b;
-	int		i;
+	int		len;
 	long	nb;
 	char	*result;
 
 	b = ft_check_base(base); 
-	i = ft_len_numb(n, b);
-	nb = n;
-	if (!(result = (char*)malloc(sizeof(char) * i)))
+	len = ft_len_numb(n, b);
+	nb = (long)n;
+	if (!(result = (char*)malloc(sizeof(char) * len)))
 		return (NULL);
 	if (b == 0 || b == 1)
 		return (0);
-	result[i] = '\0';
 	if (nb < 0)
     {
 		result[0] = '-';
         nb = -nb;
     }
-    i--;
-	ft_recursive_itoa(nb, i, base, result);
+	result[len] = '\0';
+	ft_recursive_itoa(nb, len - 1, base, result);
 	return (result);
+}
+
+#include <stdio.h>
+int main(void)
+{
+    printf("%s\n", ft_itoa_base(42, "01"));
+    return (0);
 }

@@ -6,26 +6,29 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 00:54:59 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/14 16:48:27 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/12/09 21:16:53 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-char    *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	char	*s1;
+	char	*str;
 
-	i = 0;
+	i = 1;
 	if (s == NULL)
 		return (NULL);
 	if (start >= ft_strlen(s))
-		len = 0;
-	if (!(s1 = (char*)malloc(sizeof(char) * (len + 1))))
+		return (ft_strdup(""));
+	while (s[i + start] && i < len)
+		i++;
+	if (!(str = (char*)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
-	while (*s && i < len)
-		s1[i++] = s[start++];
-	s1[i] = '\0';
-	return (s1);
+	i = 0;
+	while (s[i] && i < len)
+		str[i++] = s[start++];
+	str[i] = '\0';
+	return (str);
 }

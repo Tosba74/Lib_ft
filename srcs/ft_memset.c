@@ -6,23 +6,23 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:40:04 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/09 22:40:01 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/25 04:09:10 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void   *ft_memset(void *b, int c, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
-    char    *s;
-    size_t  i;
+	char	*s;
+	size_t	i;
 
-    s = (char*)b;
-    i = 0;
-    while (i < len)
-    {
-        s[i] = (char)c;
-        i++; 
-    }
-    return ((void*)s);
+	s = (char*)b;
+	i = 0;
+	while (i < len)
+	{
+		s[i] = (char)c;
+		i++;
+	}
+	return ((void*)s);
 }

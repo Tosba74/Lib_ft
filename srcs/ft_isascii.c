@@ -6,16 +6,16 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:44:30 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/04 00:44:40 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/23 18:24:26 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int     ft_isascii(int c)
+int		ft_isascii(int c)
 {
-    if (c >= 0 && c <= 127)
-        return (1);
-    else
-        return (0);
+	if (0 <= c && c <= 127)
+		return (1);
+	else
+		return (0);
 }

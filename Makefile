@@ -1,122 +1,77 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/10/31 11:21:40 by bmangin           #+#    #+#              #
-#    Updated: 2020/11/12 01:14:36 by bmangin          ###   ########lyon.fr    #
-#                                                                              #
-# **************************************************************************** #
+NAME	= libft.a
 
-NAME 	= libft.a
+PATH_I	= includes/
 
-HEADER	= ./includes/libft.h
+PATH_S	= srcs/
 
-P_FIX	= ./srcs/
+PATH_O	= bin/
 
-FILES 	= ft_atoi.c ft_atoi_base.c ft_bzero.c ft_calloc.c ft_isalnum.c \
-	ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c \
-	ft_itoa_base.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
-	ft_memmove.c ft_memset.c ft_putchar.c ft_putchar_fd.c ft_putendl_fd.c \
-	ft_putnbr.c ft_putnbr_base.c ft_putnbr_fd.c ft_putstr.c ft_putstr_fd.c \
-	ft_split.c ft_split_whitespaces.c ft_strcat.c ft_strchr.c ft_strcmp.c \
-	ft_strcpy.c ft_strdup.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
-	ft_strlen.c ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c \
-	ft_strnstr.c ft_strrchr.c ft_strrev.c ft_strstr.c ft_strtrim.c \
-	ft_substr.c ft_tolower.c ft_toupper.c ft_check_base.c
+HDRS	= libft.h
+
+FILES	= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
+		  ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_memccpy.c \
+		  ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
+		  ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_putstr_fd.c \
+		  ft_split.c ft_strchr.c ft_strdup.c ft_strjoin.c ft_strlcat.c \
+		  ft_strlcpy.c ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
+		  ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
+		  ft_check_base.c ft_atoi_base.c ft_itoa_base.c ft_putnbr_base.c \
+		  ft_putchar.c ft_putstr.c ft_putnbr.c ft_isspace.c ft_strstr.c \
+		  ft_strcat.c ft_strncat.c ft_strncpy.c ft_split_whitespaces.c \
+		  ft_strcmp.c
 
 FILES_B	= ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c \
-	ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c
+		  ft_lstiter.c ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
 
-SRC		= $(addprefix ${P_FIX},${FILES})
+OBJS	= ${FILES:.c=.o}
 
-SRC_B	= $(addprefix ${P_FIX},${FILES_B})
+OBJS_B	= ${FILES_B:.c=.o}
 
-OBJS	= ${SRC:.c=.o}
+INC		= ${addprefix ${PATH_I}, ${HDRS}}
 
-OBJS_B	= ${SRC_B:.c=.o}
+SRCS	= ${addprefix ${PATH_S}, ${FILES}}
 
-CC		= gcc
+TMP		= ${addprefix ${PATH_S}, ${OBJS}}
 
-FLAGS	= -Wall -Wextra -Werror
+TMP_B	= ${addprefix ${PATH_S}, ${OBJS_B}}
 
-AR		= ar rc
+BIN		= ${addprefix ${PATH_O}, ${OBJS}}
+
+BIN_B	= ${addprefix ${PATH_O}, ${OBJS_B}}
+
+CC		= clang
+
+FLAGS	= -Wall -Wextra -Wall
+
+AR		= ar rcs
+
+MV		= mv
+
+RM		= rm
 
 I_LIB	= ranlib
 
-RM		= rm -f
+all :		${NAME} ${BONUS}
 
-.SILENT:
+%.o : %.c
+	${CC} ${FLAGS} -o $@ -c $< -I ${INC}
 
-_BLACK=\x1b[30m
-_R=\x1b[31m
-_G=\x1b[32m
-_Y=\x1b[33m
-_B=\x1b[34m
-_P=\x1b[35m
-_C=\x1b[36m
-_E=\x1b[0m
+${NAME}	:	${TMP}
+	${MV} $? ${PATH_O}
+	${AR} $@ ${BIN}
+	${I_LIB} $@
 
-all:			${OBJS}
-		${AR} ${NAME} ${OBJS}
-		echo "${_P}-----${_E}\t${_R}   creating archive${_E}\t${_P}-----${_E}"
-		ranlib ${NAME}
-		sleep 0.5
-		echo "${_P}-----${_E}\t${_R}    library index${_E}\t${_P}-----${_E}"
-		sleep 1.5
-		${MONKEY}
-		clear
-		echo "\n"
-		echo "$(_C)    _/       _/ _/            _/_/   _/$(_E)"
-		echo "$(_C)   _/          _/_/_/      _/     _/_/_/_/$(_E)"
-		echo "$(_C)  _/       _/ _/    _/  _/_/_/_/   _/$(_E)"
-		echo "$(_C) _/       _/ _/    _/    _/       _/$(_E)"
-		echo "$(_C)_/_/_/_/ _/ _/_/_/      _/         _/_/$(_E)"
-		echo "${_B}                          is ready !!!${_E}"
-		echo "\n"
+bonus :		${TMP_B}
+	${MV} $? ${PATH_O}
+	${AR} ${NAME} ${BIN_B}
+	${I_LIB} ${NAME}
 
-.c.o:
-		echo "${_Y}compiling >>>${E}${_G} $<${_E}"
-		${CC} ${FLAGS} -c $< -o ${<:.c=.o} -I ${HEADER}
+clean : 
+	${RM} ${BIN} ${BIN_B}
 
-${NAME}:		${OBJS}
-		${AR} ${NAME} ${OBJS}
-		${I_LIB} ${NAME}
-
-bonus:		${OBJS_B}
-		${AR} ${NAME} ${OBJS_B}
-		${I_LIB} ${NAME}
-
-clean:		monkey
-		echo "${_P}$@ ${_E}${_R}ecrase your objets !${_E}"
-		${RM} ${OBJS} ${OBJS_B}
-
-fclean:		monkey clean
-		echo "${_P}$@ ${_E}${_R}ecrase all !!!${_E}"
-		${RM} ${NAME}
-
-monkey:
-		clear
-		echo "$(_R)        o$(_E)"
-		echo "$(_R)     ' /_\ '$(_E)"
-		echo "$(_Y)    - (o o) -$(_E)"
-		echo "$(_G) -$(_E)$(_Y)ooO$(_E)$(_G)--$(_E)$(_Y)(_)$(_E)$(_G)--$(_E)$(_Y)Ooo$(_E)$(_G)-$(_E)"
-		sleep 1
-		clear
-		echo "$(_R)        o$(_E)"
-		echo "$(_R)     ' /_\ '$(_E)"
-		echo "$(_Y)    - (o -) -$(_E)"
-		echo "$(_G) -$(_E)$(_Y)ooO$(_E)$(_G)--$(_E)$(_Y)(_)$(_E)$(_G)--$(_E)$(_Y)Ooo$(_E)$(_G)-$(_E)"
-		sleep 0.5
-		clear
-		echo "$(_R)        o$(_E)"
-		echo "$(_R)     ' /_\ '$(_E)"
-		echo "$(_Y)    - (o o) -$(_E)"
-		echo "$(_G) -$(_E)$(_Y)ooO$(_E)$(_G)--$(_E)$(_Y)(_)$(_E)$(_G)--$(_E)$(_Y)Ooo$(_E)$(_G)-$(_E)"
-		sleep 0.5
+fclean :	clean
+	${RM} ${NAME}
 
 re:			fclean all
 
-.PHONY:		clean fclean all re monkey
+.PHONY:		bonus clean fclean all re

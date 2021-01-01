@@ -12,7 +12,7 @@
 
 #include "../includes/libft.h"
 
-int     ft_isneg(char c)
+static int  ft_isneg(char c)
 {
 	if (c == '-')
 		return (-1);
@@ -20,7 +20,7 @@ int     ft_isneg(char c)
 		return (1);
 }
 
-int		ft_find_index(char c, const char *base)
+static int  ft_find_index(char c, const char *base)
 {
 	int		i;
 
@@ -34,7 +34,7 @@ int		ft_find_index(char c, const char *base)
 	return (-1);
 }
 
-int     ft_atoi_base(const char *str, const char *base)
+int         ft_atoi_base(const char *str, const char *base)
 {
     int     num;
     int     neg;
@@ -59,4 +59,13 @@ int     ft_atoi_base(const char *str, const char *base)
         str++;
     }
    return (num * neg);
+}
+
+
+
+#include <stdio.h>
+int main(void)
+{
+    printf("%d\n", ft_atoi_base("101010", "01"));
+    return (0);
 }

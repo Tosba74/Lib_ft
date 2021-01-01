@@ -6,16 +6,16 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:43:42 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/04 00:44:00 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/26 14:43:13 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int     ft_isprint(int c)
+int		ft_isprint(int c)
 {
-    if (c >= 32 && c <= 126)
-        return (1);
-    else
-        return (0);
+	if (32 <= c && c <= 126)
+		return (1);
+	else
+		return (0);
 }

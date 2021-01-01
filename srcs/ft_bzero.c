@@ -6,13 +6,13 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:45:38 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/12 01:53:33 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/23 17:52:51 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void    ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	char	*str;
 	size_t	i;
@@ -20,8 +20,5 @@ void    ft_bzero(void *s, size_t n)
 	str = (char*)s;
 	i = 0;
 	while (i < n)
-	{
-		str[i] = 0;
-		i++;
-	}
+		str[i++] = 0;
 }

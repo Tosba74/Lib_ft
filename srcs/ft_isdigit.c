@@ -6,16 +6,16 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:44:10 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/04 00:44:15 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2020/11/26 14:42:34 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int     ft_isdigit(int c)
+int		ft_isdigit(int c)
 {
-    if (c >= '0' && c <= '9')
-        return (1);
-    else
-        return (0);
+	if ('0' <= c && c <= '9')
+		return (1);
+	else
+		return (0);
 }
