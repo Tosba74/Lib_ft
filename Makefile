@@ -51,27 +51,75 @@ RM		= rm
 
 I_LIB	= ranlib
 
-all :		${NAME} ${BONUS}
+
+.SILENT:
+
+_BLACK=\x1b[30m
+_R=\x1b[31m
+_G=\x1b[32m
+_Y=\x1b[33m
+_B=\x1b[34m
+_P=\x1b[35m
+_C=\x1b[36m
+_E=\x1b[0m
+
+all :		${NAME} ${BONUS} libft
 
 %.o : %.c
 	${CC} ${FLAGS} -o $@ -c $< -I ${INC}
+	echo "${_Y}compiling >>>${E}${_G} $<${_E}"
 
 ${NAME}	:	${TMP}
 	${MV} $? ${PATH_O}
+	echo "${_P}-----${_E}\t${_R}   creating archive${_E}\t${_P}-----${_E}"
 	${AR} $@ ${BIN}
+	echo "${_P}-----${_E}\t${_R}    library index${_E}\t${_P}-----${_E}"
 	${I_LIB} $@
 
 bonus :		${TMP_B}
 	${MV} $? ${PATH_O}
 	${AR} ${NAME} ${BIN_B}
+	echo "${_P}-----${_E}\t${_R}    library index${_E}\t${_P}-----${_E}"
 	${I_LIB} ${NAME}
 
 clean : 
 	${RM} ${BIN} ${BIN_B}
+	echo "${_P}$@ ${_E}${_R}ecrase your objets !${_E}"
 
 fclean :	clean
 	${RM} ${NAME}
+	echo "${_P}$@ ${_E}${_R}ecrase all !!!${_E}"
+
+libft:	
+		echo "\n"
+		echo "$(_C)    _/       _/ _/            _/_/   _/$(_E)"
+		echo "$(_C)   _/          _/_/_/      _/     _/_/_/_/$(_E)"
+		echo "$(_C)  _/       _/ _/    _/  _/_/_/_/   _/$(_E)"
+		echo "$(_C) _/       _/ _/    _/    _/       _/$(_E)"
+		echo "$(_C)_/_/_/_/ _/ _/_/_/      _/         _/_/$(_E)"
+		echo "${_B}                          is ready !!!${_E}"
+		echo "\n"
+
+monkey:
+		clear
+		echo "$(_R)        o$(_E)"
+		echo "$(_R)     ' /_\ '$(_E)"
+		echo "$(_Y)    - (o o) -$(_E)"
+		echo "$(_G) -$(_E)$(_Y)ooO$(_E)$(_G)--$(_E)$(_Y)(_)$(_E)$(_G)--$(_E)$(_Y)Ooo$(_E)$(_G)-$(_E)"
+		sleep 1
+		clear
+		echo "$(_R)        o$(_E)"
+		echo "$(_R)     ' /_\ '$(_E)"
+		echo "$(_Y)    - (o -) -$(_E)"
+		echo "$(_G) -$(_E)$(_Y)ooO$(_E)$(_G)--$(_E)$(_Y)(_)$(_E)$(_G)--$(_E)$(_Y)Ooo$(_E)$(_G)-$(_E)"
+		sleep 0.5
+		clear
+		echo "$(_R)        o$(_E)"
+		echo "$(_R)     ' /_\ '$(_E)"
+		echo "$(_Y)    - (o o) -$(_E)"
+		echo "$(_G) -$(_E)$(_Y)ooO$(_E)$(_G)--$(_E)$(_Y)(_)$(_E)$(_G)--$(_E)$(_Y)Ooo$(_E)$(_G)-$(_E)"
+		sleep 0.5
 
 re:			fclean all
 
-.PHONY:		bonus clean fclean all re
+.PHONY:		monkey bonus clean fclean all re
