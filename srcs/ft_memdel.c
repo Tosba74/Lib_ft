@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 11:30:31 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/12 01:07:21 by bmangin          ###   ########lyon.fr   */
+/*   Created: 2020/11/04 00:40:04 by bmangin           #+#    #+#             */
+/*   Updated: 2021/02/04 14:08:02 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void    ft_putnbr_base(int n, char *base)
+void		ft_memdel(void *ap)
 {
-	long	nb;
-	int		b;
-
-	nb = n;
-	b = ft_check_base(base);
-	if (b == 0 || b == 1)
-		return ;
-	if (nb < 0)
+	if (ap)
 	{
-		ft_putchar('-');
-		nb = -nb;
+		free(ap);
+		ap = NULL;
 	}
-	if (nb >= b)
-		ft_putnbr_base(nb / b, base);
-	ft_putchar(base[nb % b]);
 }

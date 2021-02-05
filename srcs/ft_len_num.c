@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_len_num.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: bmangin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 11:30:31 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/12 01:07:21 by bmangin          ###   ########lyon.fr   */
+/*   Created: 2021/01/05 15:54:18 by bmangin           #+#    #+#             */
+/*   Updated: 2021/01/05 15:54:23 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void    ft_putnbr_base(int n, char *base)
+int		ft_len_num(int n, int b)
 {
-	long	nb;
-	int		b;
+	int		count;
 
-	nb = n;
-	b = ft_check_base(base);
-	if (b == 0 || b == 1)
-		return ;
-	if (nb < 0)
+	count = 0;
+	if (n < 0)
 	{
-		ft_putchar('-');
-		nb = -nb;
+		n = -n;
+		count++;
 	}
-	if (nb >= b)
-		ft_putnbr_base(nb / b, base);
-	ft_putchar(base[nb % b]);
+	while (n > 0 && b >= 1)
+	{
+		n /= b;
+		count++;
+	}
+	return (count);
 }

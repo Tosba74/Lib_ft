@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:58:17 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/27 19:12:14 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2021/02/04 14:05:35 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <limits.h>
 
 typedef struct		s_list
 {
@@ -27,8 +28,8 @@ typedef struct		s_list
 **                  BASICS FUNCTIONS
 */
 int					ft_atoi(const char *str);
-int                 ft_atoi_base(const char *str, const char *base);
-int		            ft_check_base(const char *base);
+int					ft_atoi_base(const char *str, const char *base);
+int					ft_check_base(const char *base);
 int					ft_isspace(int c);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
@@ -62,23 +63,33 @@ void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *b, int c, size_t len);
+void				ft_memdel(void *ap);
 /*
 **                  ADD FUNCTIONS
 */
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin_free(char const *s1, char const *s2, int sp);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				**ft_split_whitespaces(char const *s);
+int					ft_putchar_len(char c);
+int					ft_putstr_len(char *s);
+int					ft_len_num(int n, int b);
+int					ft_putnbr_len(int n);
+int					ft_len_itoa(int n, int b);
+int					ft_itoa_base_len(char *result, int n, const char *base);
 char				*ft_itoa(int n);
-char            	*ft_itoa_base(int n, const char *base);
+char				*ft_itoa_base(int n, const char *base);
+char				*ft_hexa(int n, const char *base);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 void				ft_putchar_fd(char c, int fd);
 void				ft_putchar(char c);
+void				ft_putstr(char *s);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putnbr(int n);
 void				ft_putnbr_fd(int n, int fd);
-void                ft_putnbr_base(int n, char *base);
+void				ft_putnbr_base(int n, char *base);
 void				ft_putendl_fd(char *s, int fd);
 /*
 **                  BONUS FUNCTIONS
@@ -93,5 +104,9 @@ t_list				*ft_lstnew(void *content);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 void (*del)(void *));
 t_list				*ft_lstlast(t_list *lst);
+/*
+**					GNL
+*/
+int					get_next_line(int fd, char **line);
 
 #endif

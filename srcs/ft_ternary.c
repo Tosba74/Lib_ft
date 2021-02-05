@@ -1,32 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_ternary.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 11:30:31 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/12 01:07:21 by bmangin          ###   ########lyon.fr   */
+/*   Created: 2021/01/10 20:50:19 by bmangin           #+#    #+#             */
+/*   Updated: 2021/01/11 10:37:17 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+# include "../includes/libft.h"
 
-void    ft_putnbr_base(int n, char *base)
+void	ft_ternary (int *(*condition)(void *), void *(*f1)(void *), void *(*f2)(void *))
 {
-	long	nb;
-	int		b;
-
-	nb = n;
-	b = ft_check_base(base);
-	if (b == 0 || b == 1)
-		return ;
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb >= b)
-		ft_putnbr_base(nb / b, base);
-	ft_putchar(base[nb % b]);
+	if (condition() == 0)
+		return (f1());
+	else if (condition() > 0)
+		return (f2(void *));
 }

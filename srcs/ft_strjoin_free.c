@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 11:30:31 by bmangin           #+#    #+#             */
-/*   Updated: 2020/11/12 01:07:21 by bmangin          ###   ########lyon.fr   */
+/*   Created: 2020/11/07 15:08:23 by bmangin           #+#    #+#             */
+/*   Updated: 2021/02/04 14:51:01 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void    ft_putnbr_base(int n, char *base)
+char	*ft_strjoin_free(char const *s1, char const *s2, int sp)
 {
-	long	nb;
-	int		b;
+	size_t	len1;
+	size_t	len2;
+	char	*s;
 
-	nb = n;
-	b = ft_check_base(base);
-	if (b == 0 || b == 1)
-		return ;
-	if (nb < 0)
-	{
-		ft_putchar('-');
-		nb = -nb;
-	}
-	if (nb >= b)
-		ft_putnbr_base(nb / b, base);
-	ft_putchar(base[nb % b]);
+	if (!s1 || !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (!(s = (char*)malloc(sizeof(char) * len1 + len2 + 1)))
+		return (NULL);
+	ft_memcpy(s, s1, len1);
+	ft_memcpy(s + len1, s2, len2 + 1);
+	if (sp)
+		ft_memdel((void *)s1);
+	return (s);
 }
