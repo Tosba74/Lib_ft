@@ -6,7 +6,7 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:58:17 by bmangin           #+#    #+#             */
-/*   Updated: 2021/02/04 14:05:35 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 17:49:44 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include <stdlib.h>
 # include <string.h>
 # include <limits.h>
+# include <stdio.h>
 
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -44,7 +45,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 char				*ft_strdup(const char *s1);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack, const char *needle,
-size_t len);
+						size_t len);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strcpy(char *dst, const char *src);
@@ -73,16 +74,19 @@ char				*ft_strjoin_free(char const *s1, char const *s2, int sp);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				**ft_split_whitespaces(char const *s);
+int					ft_norm_all(void **s, size_t count, size_t size);
 int					ft_putchar_len(char c);
-int					ft_putstr_len(char *s);
-int					ft_len_num(int n, int b);
+int					ft_len_num(long n, int b);
 int					ft_putnbr_len(int n);
 int					ft_len_itoa(int n, int b);
 int					ft_itoa_base_len(char *result, int n, const char *base);
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, const char *base);
+char				*ft_utoa_base(unsigned int n, const char *base);
+char				*ft_ulltoa_base(unsigned long long ull, char *base);
 char				*ft_hexa(int n, const char *base);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void				ft_putstr_len(char *s, size_t len);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putchar(char c);
 void				ft_putstr(char *s);
@@ -102,7 +106,7 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstnew(void *content);
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-void (*del)(void *));
+						void (*del)(void *));
 t_list				*ft_lstlast(t_list *lst);
 /*
 **					GNL

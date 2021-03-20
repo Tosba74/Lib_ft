@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
+#include "libft.h"
 
 char	*ft_strrev(char *s)
 {
-	size_t i;
-	size_t len;
-	char tmp;
+	size_t	i;
+	size_t	len;
+	char	tmp;
 
 	i = 0;
 	len = ft_strlen(s) - 1;
