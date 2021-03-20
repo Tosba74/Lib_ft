@@ -17,7 +17,7 @@ static int	ft_isneg(char c)
 	if (c == '-')
 		return (-1);
 	else
-		return (1);
+		return (FAILURE);
 }
 
 static int	ft_find_index(char c, const char *base)
@@ -44,7 +44,7 @@ int	ft_atoi_base(const char *str, const char *base)
 	neg = 1;
 	b = ft_check_base(base);
 	if (b == 0 || b == 1)
-		return (0);
+		return (SUCCESS);
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 	if (*str == '+' || *str == '-')

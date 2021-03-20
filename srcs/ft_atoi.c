@@ -17,7 +17,7 @@ static int	ft_check_num(long num, int neg, int len)
 	if (len >= 19 && neg == 1)
 		return (-1);
 	else if (len >= 20 && neg == -1)
-		return (0);
+		return (SUCCESS);
 	else
 		return (num * neg);
 }

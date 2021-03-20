@@ -22,11 +22,11 @@ int	ft_check_base(const char *base)
 	{
 		j = i + 1;
 		if (base[i] == ' ' || (base[i] >= 9 && base[i] <= 13))
-			return (0);
+			return (SUCCESS);
 		while (base[j])
 		{
 			if (base[i] == base[j])
-				return (0);
+				return (SUCCESS);
 			j++;
 		}
 		i++;

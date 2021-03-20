@@ -21,8 +21,8 @@ static int	ft_find_eol(char *s)
 	i = 0;
 	while (s[i])
 		if (s[i++] == '\n')
-			return (1);
-	return (0);
+			return (FAILURE);
+	return (SUCCESS);
 }
 
 static char	*ft_copy_line(char *rest, char *line)
@@ -73,9 +73,9 @@ static int	ft_create_line(char **rest, char **line, int ret)
 	if (ret == 0)
 	{
 		ft_memdel(*rest);
-		return (0);
+		return (SUCCESS);
 	}
-	return (1);
+	return (FAILURE);
 }
 
 int	get_next_line(int fd, char **line)

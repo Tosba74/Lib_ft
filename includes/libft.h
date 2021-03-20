@@ -6,12 +6,15 @@
 /*   By: bmangin <bmangin@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 00:58:17 by bmangin           #+#    #+#             */
-/*   Updated: 2021/03/20 17:49:44 by bmangin          ###   ########lyon.fr   */
+/*   Updated: 2021/03/20 18:01:48 by bmangin          ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# define SUCCESS 0
+# define FAILURE 1
 
 # include <unistd.h>
 # include <stdlib.h>

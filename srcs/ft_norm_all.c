@@ -15,10 +15,10 @@
 int	ft_norm_all(void **s, size_t count, size_t size)
 {
 	if (count < 0 || size < 0)
-		return (1);
+		return (FAILURE);
 	*s = (void *)malloc(count * size);
 	if (!(*s))
-		return (1);
+		return (FAILURE);
 	ft_bzero(*s, count * size);
-	return (0);
+	return (SUCCESS);
 }

@@ -32,9 +32,9 @@ int	ft_itoa_base_len(char *result, int n, const char *base)
 	len = ft_len_num(n, b);
 	nb = (long)n;
 	if (ft_norm_all((void *)&result, len, sizeof(char)))
-		return (0);
+		return (SUCCESS);
 	if (b == 0 || b == 1)
-		return (0);
+		return (SUCCESS);
 	if (nb < 0)
 	{
 		result[0] = '-';

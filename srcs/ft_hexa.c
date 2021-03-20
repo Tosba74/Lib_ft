@@ -46,7 +46,7 @@ char	*ft_hexa(int n, const char *base)
 	if (ft_norm_all((void *)&result, len + 1, sizeof(char)))
 		return (NULL);
 	if (b == 0 || b == 1)
-		return (0);
+		return (SUCCESS);
 	if (nb < 0)
 	{
 		result[0] = '-';

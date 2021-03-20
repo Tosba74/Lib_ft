@@ -17,10 +17,10 @@ static int	ft_check_set(char c, char const *set)
 	while (*set)
 	{
 		if (*set == c)
-			return (1);
+			return (FAILURE);
 		set++;
 	}
-	return (0);
+	return (SUCCESS);
 }
 
 static int	ft_len_word(char const *s, char const *set)

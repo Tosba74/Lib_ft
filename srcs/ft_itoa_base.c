@@ -34,7 +34,7 @@ char	*ft_itoa_base(int n, const char *base)
 	len = ft_len_num(nb, b);
 	result = NULL;
 	if (b == 0 || b == 1)
-		return (0);
+		return (SUCCESS);
 	if (ft_norm_all((void *)&result, len + 1, (sizeof(char))))
 		return (NULL);
 	if (nb == -2147483648)
